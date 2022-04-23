@@ -1,6 +1,15 @@
 const express = require('express');
+
+//client side
+const cors = require('cors')
+
 const app = express();
 const port = process.env.PORT || 5000;
+
+
+//client side call
+app.use(cors())
+
 
 app.get('/', (req, res) => {
     res.send("Hello From my over personal Smarty Smarty Pant !! with auto restart")
@@ -40,8 +49,16 @@ app.get('/user/:id', (req, res) => {
 
     // response send
     res.send(user);
-})
+});
 
+
+app.get('/fruits', (req, res) => {
+    res.send(['mango', 'apple', 'oranges'])
+});
+
+app.get('/fruits/mango/fazle', (req, res) => {
+    res.send('sour sour fazle flavor');
+})
 
 
 app.listen(port, () => {
