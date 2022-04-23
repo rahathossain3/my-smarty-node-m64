@@ -7,15 +7,17 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 
-//client side call
+//1. client side call-------------------
 app.use(cors())
+//2. get data (midel wire)
+app.use(express.json());
 
 
 app.get('/', (req, res) => {
     res.send("Hello From my over personal Smarty Smarty Pant !! with auto restart")
 });
 
-// custom api
+// custom api --
 
 const users = [
     { id: 1, name: 'Sabana', email: 'samaba@gmail.com', phone: '01788888888' },
@@ -27,12 +29,12 @@ const users = [
     { id: 7, name: 'sohana', email: 'sohana@gmail.com', phone: '01788888888' },
 ]
 
-// get full api data
+// get full api data---
 app.get('/users', (req, res) => {
     res.send(users)
 })
 
-// dynamic single api data find
+// dynamic single api data find----
 app.get('/user/:id', (req, res) => {
     console.log(req.params);
 
@@ -50,6 +52,16 @@ app.get('/user/:id', (req, res) => {
     // response send
     res.send(user);
 });
+
+//add a new data (dynamic data)----------
+app.post('/user', (req, res) => {
+
+    console.log('request', req.body)
+
+    res.send('post method success')
+})
+
+
 
 
 app.get('/fruits', (req, res) => {
