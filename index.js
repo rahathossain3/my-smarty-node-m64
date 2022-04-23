@@ -56,9 +56,14 @@ app.get('/user/:id', (req, res) => {
 //add a new data (dynamic data)----------
 app.post('/user', (req, res) => {
 
-    console.log('request', req.body)
+    console.log('request', req.body);
 
-    res.send('post method success')
+    const user = req.body;
+    //add dynamic user id 
+    user.id = users.length + 1;
+    //set all user value bu users
+    users.push(user);
+    res.send(user)
 })
 
 
